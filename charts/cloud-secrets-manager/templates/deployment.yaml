@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "cloud-secrets-controller.fullname" . }}
+  name: {{ include "cloud-secrets-manager.fullname" . }}
   labels:
-    {{- include "cloud-secrets-controller.labels" . | nindent 4 }}
+    {{- include "cloud-secrets-manager.labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
-      {{- include "cloud-secrets-controller.selectorLabels" . | nindent 6 }}
+      {{- include "cloud-secrets-manager.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -15,13 +15,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "cloud-secrets-controller.selectorLabels" . | nindent 8 }}
+        {{- include "cloud-secrets-manager.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "cloud-secrets-controller.serviceAccountName" . }}
+      serviceAccountName: {{ include "cloud-secrets-manager.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:
@@ -63,7 +63,7 @@ spec:
       volumes:
         - name: certs
           secret:
-            secretName: {{ include "cloud-secrets-controller.fullname" . }}-tls
+            secretName: {{ include "cloud-secrets-manager.fullname" . }}-tls
             optional: false
       {{- with .Values.nodeSelector }}
       nodeSelector:

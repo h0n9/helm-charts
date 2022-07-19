@@ -1,14 +1,14 @@
 apiVersion: admissionregistration.k8s.io/v1
 kind: MutatingWebhookConfiguration
 metadata:
-  name: {{ include "cloud-secrets-controller.fullname" . }}
+  name: {{ include "cloud-secrets-manager.fullname" . }}
   labels:
-    {{- include "cloud-secrets-controller.labels" . | nindent 4 }}
+    {{- include "cloud-secrets-manager.labels" . | nindent 4 }}
 webhooks:
   - clientConfig:
       caBundle: Cg==
       service:
-        name: {{ include "cloud-secrets-controller.fullname" . }}
+        name: {{ include "cloud-secrets-manager.fullname" . }}
         path: /mutate
         port: {{ .Values.service.port }}
         namespace: {{ .Release.Namespace }}
