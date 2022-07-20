@@ -3,6 +3,16 @@ entries:
   cloud-secrets-manager:
   - apiVersion: v2
     appVersion: v0.0.9
+    created: "2022-07-20T11:57:35.515642263Z"
+    description: A Helm chart for Kubernetes
+    digest: cadddbe806c59c5ecef47e0aebbced097549c4a5fc006024c2200b468b647a96
+    name: cloud-secrets-manager
+    type: application
+    urls:
+    - https://github.com/h0n9/helm-charts/releases/download/cloud-secrets-manager-0.2.3/cloud-secrets-manager-0.2.3.tgz
+    version: 0.2.3
+  - apiVersion: v2
+    appVersion: v0.0.9
     created: "2022-07-19T23:09:10.671640283Z"
     description: A Helm chart for Kubernetes
     digest: a62f3bae141be1d8af9d9a1629d6309aba2ef8a7d423327ac53943d3337e49d1
