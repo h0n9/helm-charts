@@ -33,10 +33,10 @@ spec:
           args:
             - "cert"
             - "generate"
-            - "--namespace {{ .Release.Namespace }}"
-            - "--service-name {{ include "cloud-secrets-manager.fullname" . }}"
-            - "--secret-name {{ include "cloud-secrets-manager.fullname" . }}-tls"
-            - "--cert-dir /etc/certs"
+            - "--namespace={{ .Release.Namespace }}"
+            - "--service-name={{ include "cloud-secrets-manager.fullname" . }}"
+            - "--secret-name={{ include "cloud-secrets-manager.fullname" . }}-tls"
+            - "--cert-dir=/etc/certs"
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -46,11 +46,11 @@ spec:
           args:
             - "controller"
             - "run"
-            - "--namespace {{ .Release.Namespace }}"
-            - "--service {{ include "cloud-secrets-manager.fullname" . }}"
-            - "--port 8443"
-            - "--cert-dir /etc/certs"
-            - "--image {{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+            - "--namespace={{ .Release.Namespace }}"
+            - "--service={{ include "cloud-secrets-manager.fullname" . }}"
+            - "--port=8443"
+            - "--cert-dir=/etc/certs"
+            - "--image={{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           ports:
             - name: https
               containerPort: 8443
