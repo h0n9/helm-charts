@@ -34,8 +34,8 @@ spec:
             - "cert"
             - "generate"
             - "--namespace={{ .Release.Namespace }}"
-            - "--service-name={{ include "cloud-secrets-manager.fullname" . }}"
-            - "--secret-name={{ include "cloud-secrets-manager.fullname" . }}-tls"
+            - "--service={{ include "cloud-secrets-manager.fullname" . }}"
+            - "--secret={{ include "cloud-secrets-manager.fullname" . }}-tls"
             - "--cert-dir=/etc/certs"
       containers:
         - name: {{ .Chart.Name }}
