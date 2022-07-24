@@ -37,6 +37,9 @@ spec:
             - "--service={{ include "cloud-secrets-manager.fullname" . }}"
             - "--secret={{ include "cloud-secrets-manager.fullname" . }}-tls"
             - "--cert-dir=/etc/certs"
+          volumeMounts:
+            - name: certs
+              mountPath: /etc/certs
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -71,9 +74,7 @@ spec:
               readOnly: true
       volumes:
         - name: certs
-          secret:
-            secretName: {{ include "cloud-secrets-manager.fullname" . }}-tls
-            optional: false
+          emptyDir: {}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
