@@ -35,7 +35,6 @@ spec:
             - "generate"
             - "--namespace={{ .Release.Namespace }}"
             - "--service={{ include "cloud-secrets-manager.fullname" . }}"
-            - "--secret={{ include "cloud-secrets-manager.fullname" . }}-tls"
             - "--cert-dir=/etc/certs"
           volumeMounts:
             - name: certs
